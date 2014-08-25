@@ -2,7 +2,7 @@ FROM cloudfoundry/golang-ci
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
 # pull in dependencies for the server
-RUN apt-get update && apt-get -y install iptables quota rsync net-tools protobuf-compiler
+RUN apt-get update && apt-get -y install iptables quota protobuf-compiler
 
 # pull in the prebuilt rootfs
 ADD warden-test-rootfs.tar /opt/warden/rootfs

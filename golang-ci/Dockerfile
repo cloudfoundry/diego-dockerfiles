@@ -7,10 +7,19 @@ ENV PATH /root/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin
 
 RUN mkdir -p $GOPATH
 
-RUN apt-get update && apt-get install -y build-essential mercurial git-core subversion wget
+# install build dependencies
+RUN apt-get update && \
+      apt-get -y install build-essential git wget python libpython-dev \
+      && apt-get clean
 
 # install Go 1.3.1
 RUN wget -qO- https://storage.googleapis.com/golang/go1.3.1.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+
+# install Mercurial (for hg go dependencies)
+RUN wget -qO- http://mercurial.selenic.com/release/mercurial-2.9.2.tar.gz | tar -C /tmp -xzf - && \
+      cd /tmp/mercurial-2.9.2 && \
+      sudo python setup.py install && \
+      rm -rf /tmp/mercurial-2.9.2
 
 # install common CI dependencies
 RUN go get github.com/dustin/goveralls
