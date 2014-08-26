@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"time"
+	"strings"
 )
 
 type VCAPApplicationEnv struct {
@@ -29,8 +30,22 @@ func main() {
 	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		// used to report to tests
+		// used to report instance index to tests
 		fmt.Fprintf(w, "%d", env.InstanceIndex)
+	})
+
+	http.HandleFunc("/env", func(w http.ResponseWriter, r *http.Request) {
+		// used to report env vars to tests
+		env_vars := make(map[string]string)
+		for _, e := range os.Environ() {
+	        pair := strings.Split(e, "=")
+	        env_vars[pair[0]] = pair[1]
+	    }
+		env_json, err := json.Marshal(env_vars)
+		if err != nil {
+			panic("Invalid env_vars: " + err.Error())
+		}
+		fmt.Fprintf(w, "%s", env_json)
 	})
 
 	addr := *listenAddr
