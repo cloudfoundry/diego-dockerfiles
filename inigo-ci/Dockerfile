@@ -5,4 +5,4 @@ MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 RUN apt-get -y install zip
 
 # default rootfs for warden; used for non-Docker inigo tests
-ADD inigo-test-rootfs.tar /opt/warden/rootfs
+ADD inigo-test-rootfs.tar /opt/garden/rootfs
