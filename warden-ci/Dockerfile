@@ -9,3 +9,6 @@ ADD warden-test-rootfs.tar /opt/warden/rootfs
 
 # install the binary for generating the protocol
 RUN go get code.google.com/p/gogoprotobuf/protoc-gen-gogo
+
+# debugging utilities
+RUN apt-get -y install strace lsof psmisc
