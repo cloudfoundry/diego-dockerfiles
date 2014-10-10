@@ -1,4 +1,4 @@
-FROM cloudfoundry/lucid64:minbase
+FROM ubuntu:10.04
 
 ADD build /tmp/build
 ADD assets /tmp/assets

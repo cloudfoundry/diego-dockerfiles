@@ -118,9 +118,6 @@ EOS
 # see https://github.com/dotcloud/docker/pull/2979
 echo "udev hold" | dpkg --set-selections
 
-# install gpgv so we can update
-apt_get install gpgv
-
 apt_get update
 
 apt_get install $packages $ubuntu_minimal_stripped
