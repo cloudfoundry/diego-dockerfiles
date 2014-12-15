@@ -24,3 +24,6 @@ RUN wget -qO- http://mercurial.selenic.com/release/mercurial-2.9.2.tar.gz | tar 
 # install common CI dependencies
 RUN go get github.com/dustin/goveralls
 RUN go get golang.org/x/tools/cmd/cover
+
+# debugging tools; graphviz is for rendering heap w/ pprof
+RUN apt-get -y install htop strace curl graphviz
