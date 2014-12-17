@@ -6,6 +6,7 @@ RUN apt-get update && apt-get -y install iptables quota protobuf-compiler
 
 # pull in the prebuilt rootfs
 ADD warden-test-rootfs.tar /opt/warden/rootfs
+ADD ubuntu-test-rootfs.tar /opt/warden/nestable-rootfs
 
 # install the binary for generating the protocol
 RUN go get code.google.com/p/gogoprotobuf/protoc-gen-gogo
