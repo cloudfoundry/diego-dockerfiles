@@ -1,7 +1,3 @@
 FROM ubuntu:14.04
 
-RUN apt-get update && apt-get -y install \
-      # garden-server
-      iptables quota \
-      # FUSE tests
-      fuse
+RUN apt-get update && apt-get -y install iptables quota
