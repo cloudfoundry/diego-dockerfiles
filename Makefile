@@ -1,13 +1,14 @@
 TAG?=latest
 
-all: golang-ci diego-ci warden-ci inigo-ci inigodockertest
+all: golang-ci diego-ci warden-ci with-volume inigo-ci inigodockertest
 
-.PHONY: golang-ci diego-ci warden-ci inigo-ci inigodockertest
+.PHONY: golang-ci diego-ci warden-ci with-volume inigo-ci inigodockertest
 
 push:
 	docker push cloudfoundry/golang-ci
 	docker push cloudfoundry/diego-ci
 	docker push cloudfoundry/warden-ci
+	docker push cloudfoundry/with-volume
 	docker push cloudfoundry/inigo-ci
 	docker push cloudfoundry/inigodockertest
 
@@ -16,6 +17,9 @@ golang-ci: golang-ci/Dockerfile
 
 diego-ci: diego-ci/Dockerfile
 	docker build -t cloudfoundry/diego-ci:${TAG} --rm diego-ci
+
+with-volume: with-volume/Dockerfile
+	docker build -t cloudfoundry/with-volume:${TAG} --rm with-volume
 
 warden-ci: warden-ci/Dockerfile
 	cd warden-ci && make TAG=${TAG}
