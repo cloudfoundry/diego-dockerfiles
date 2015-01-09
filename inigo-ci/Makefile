@@ -5,7 +5,8 @@ all: inigo-test-rootfs.tar
 	rm inigo-test-rootfs.tar
 
 inigo-test-rootfs.cid:
-	docker run --cidfile=inigo-test-rootfs.cid cloudfoundry/lucid64 echo
+	docker build -t inigo-test-rootfs --rm test-rootfs
+	docker run --cidfile=inigo-test-rootfs.cid inigo-test-rootfs echo
 
 inigo-test-rootfs.tar: inigo-test-rootfs.cid
 	docker export `cat inigo-test-rootfs.cid` > inigo-test-rootfs.tar
