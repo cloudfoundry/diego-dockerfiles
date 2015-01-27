@@ -6,5 +6,6 @@ ENV BAD_SHELL $1
 ENV HOME /home/some_docker_user
 ENV SOME_VAR some_docker_value
 EXPOSE 8080
-ADD dockerapp /dockerapp
-CMD ["/dockerapp"]
+COPY dockerapp /myapp/dockerapp
+WORKDIR /myapp
+CMD ["./dockerapp"]

@@ -1,7 +1,7 @@
 TAG?=latest
 
 all: dockerapp
-	docker build -t cloudfoundry/inigodockertest:${TAG} .
+	docker build -t cloudfoundry/diego-docker-app:${TAG} .
 	rm dockerapp
 
 dockerapp: dockerapp.go
