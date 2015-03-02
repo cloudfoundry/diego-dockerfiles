@@ -1,8 +1,17 @@
-FROM cloudfoundry/warden-ci
+FROM cloudfoundry/golang-ci
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
-# for zipping up the circuses
-RUN apt-get -y install zip
+# pull in dependencies for the garden-linux server
+RUN \
+  apt-get update && \
+  apt-get -y install \
+    iptables \
+    quota \
+    ulogd \
+    zip \
+  && \
+  apt-get clean
 
 # default rootfs for warden; used for non-Docker inigo tests
 ADD inigo-test-rootfs.tar /opt/inigo/rootfs
+
