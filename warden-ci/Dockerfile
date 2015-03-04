@@ -8,6 +8,7 @@ RUN apt-get update && apt-get -y install iptables quota protobuf-compiler ulogd
 ADD warden-test-rootfs.tar /opt/warden/rootfs
 ADD ubuntu-test-rootfs.tar /opt/warden/nestable-rootfs
 ADD fuse-test-rootfs.tar /opt/warden/fuse-rootfs
+ADD docker-registry-test-rootfs.tar /opt/warden/docker-registry-rootfs
 
 # install the binary for generating the protocol
 RUN go get code.google.com/p/gogoprotobuf/protoc-gen-gogo
