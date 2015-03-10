@@ -5,7 +5,7 @@ Various docker images used on the diego project.
 
 #### Updating the inigo-ci docker image
 
-To rebuild inigo=ci:
+To rebuild inigo-ci:
 
 1. Start Docker (via boot2docker)
 
