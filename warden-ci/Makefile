@@ -1,11 +1,12 @@
 TAG?=latest
 
-all: warden-test-rootfs.tar ubuntu-test-rootfs.tar fuse-test-rootfs.tar docker-registry-test-rootfs.tar
+all: warden-test-rootfs.tar ubuntu-test-rootfs.tar fuse-test-rootfs.tar docker-registry-test-rootfs.tar no-sh.tar
 	docker build -t cloudfoundry/warden-ci:${TAG} --rm .
 	rm warden-test-rootfs.tar
 	rm ubuntu-test-rootfs.tar
 	rm fuse-test-rootfs.tar
 	rm docker-registry-test-rootfs.tar
+	rm no-sh.tar
 
 warden-test-rootfs.cid: test-rootfs/Dockerfile
 	docker build -t cloudfoundry/warden-test-rootfs --rm test-rootfs
@@ -41,3 +42,12 @@ docker-registry-test-rootfs.tar: docker-registry-test-rootfs.cid
 	docker export `cat docker-registry-test-rootfs.cid` > docker-registry-test-rootfs.tar
 	docker rm `cat docker-registry-test-rootfs.cid`
 	rm docker-registry-test-rootfs.cid
+
+no-sh.cid: no-sh/Dockerfile
+	docker build -t cloudfoundry/no-sh --rm no-sh
+	docker run --cidfile=no-sh.cid cloudfoundry/no-sh echo
+
+no-sh.tar: no-sh.cid
+	docker export `cat no-sh.cid` > no-sh.tar
+	docker rm `cat no-sh.cid`
+	rm no-sh.cid
