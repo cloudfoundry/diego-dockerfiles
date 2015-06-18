@@ -1,7 +1,7 @@
 TAG?=latest
 
 all: dockerapp
-	docker build -t cloudfoundry/diego-docker-app-customport:${TAG} .
+	docker build -t cloudfoundry/diego-docker-app-custom:${TAG} .
 	rm dockerapp
 
 dockerapp: 
