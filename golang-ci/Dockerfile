@@ -28,7 +28,7 @@ RUN \
 
 # install Go 1.4
 RUN \
-  wget -qO- https://storage.googleapis.com/golang/go1.4.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+  wget -qO- https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz | tar -C /usr/local -xzf -
 
 # install Mercurial (for hg go dependencies)
 RUN \
