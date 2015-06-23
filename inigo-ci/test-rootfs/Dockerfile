@@ -17,4 +17,5 @@ RUN \
 # for setting up /app to bind-mount to /home/vcap/app
 RUN mkdir /app
 ADD assets/etc/seed /etc/seed
+RUN useradd test_user
 
