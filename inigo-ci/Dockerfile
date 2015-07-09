@@ -9,8 +9,23 @@ RUN \
     quota \
     ulogd \
     zip \
+    pkg-config \
+    autoconf \
   && \
+  apt-get install -y asciidoc xmlto --no-install-recommends && \
+  apt-get build-dep -y btrfs-tools && \
   apt-get clean
+
+RUN \
+  mkdir -p /tmp/btrfs && \
+  cd /tmp/btrfs && \
+  git clone git://git.kernel.org/pub/scm/linux/kernel/git/kdave/btrfs-progs.git && \
+  cd btrfs-progs && \
+  ./autogen.sh && \
+  ./configure && \
+  make && \
+  make install && \
+  rm -rf /tmp/btrfs
 
 # default rootfs for warden; used for non-Docker inigo tests
 ADD inigo-test-rootfs.tar /opt/inigo/rootfs
