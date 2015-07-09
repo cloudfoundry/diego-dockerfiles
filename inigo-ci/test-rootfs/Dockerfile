@@ -14,7 +14,3 @@ RUN \
   && \
   apt-get clean
 
-# for setting up /app to bind-mount to /home/vcap/app
-RUN mkdir /app
-ADD assets/etc/seed /etc/seed
-
