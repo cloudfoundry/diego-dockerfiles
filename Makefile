@@ -1,8 +1,8 @@
 TAG?=latest
 
-all: golang-ci warden-ci with-volume inigo-ci diego-docker-app
+all: golang-ci warden-ci with-volume inigo-ci diego-docker-app diego-docker-app-custom
 
-.PHONY: golang-ci warden-ci with-volume inigo-ci diego-docker-app
+.PHONY: golang-ci warden-ci with-volume inigo-ci diego-docker-app diego-docker-app-custom
 
 push:
 	docker push cloudfoundry/golang-ci
@@ -10,6 +10,8 @@ push:
 	docker push cloudfoundry/with-volume
 	docker push cloudfoundry/inigo-ci
 	docker push cloudfoundry/inigodockertest
+	docker push cloudfoundry/diego-docker-app
+	docker push cloudfoundry/diego-docker-app-custom
 
 golang-ci: golang-ci/Dockerfile
 	docker build -t cloudfoundry/golang-ci:${TAG} --rm golang-ci
@@ -25,3 +27,6 @@ inigo-ci: inigo-ci/Dockerfile
 
 diego-docker-app: diego-docker-app/Dockerfile
 	cd diego-docker-app && make TAG=${TAG}
+
+diego-docker-app-custom: diego-docker-app-custom/Dockerfile
+	cd diego-docker-app-custom && make TAG=${TAG}
