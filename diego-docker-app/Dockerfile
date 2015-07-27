@@ -1,10 +1,6 @@
 FROM busybox
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
-RUN adduser -D -s /bin/sh diego
-
-USER diego
-
 ENV VCAP_APPLICATION {}
 ENV BAD_QUOTE \'
 ENV BAD_SHELL \$1
