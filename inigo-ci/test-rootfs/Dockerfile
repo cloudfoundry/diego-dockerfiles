@@ -15,3 +15,5 @@ RUN \
   apt-get clean
 
 RUN useradd -m testuser
+
+RUN useradd -m vcap

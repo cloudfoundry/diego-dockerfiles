@@ -11,4 +11,6 @@ EXPOSE 8080
 COPY dockerapp /myapp/dockerapp
 WORKDIR /myapp
 
+RUN adduser -D vcap
+
 CMD ["./dockerapp"]
