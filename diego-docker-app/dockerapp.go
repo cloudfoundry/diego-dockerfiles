@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"time"
 	"strings"
+	"time"
 )
 
 type VCAPApplicationEnv struct {
@@ -20,7 +20,14 @@ var listenAddr = flag.String(
 	"address to listen on",
 )
 
+var name = flag.String(
+	"name",
+	"",
+	"name to report at the name endpoint",
+)
+
 func main() {
+	flag.Parse()
 	time.Sleep(time.Second)
 
 	var env VCAPApplicationEnv
@@ -34,13 +41,17 @@ func main() {
 		fmt.Fprintf(w, "%d", env.InstanceIndex)
 	})
 
+	http.HandleFunc("/name", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "%s", *name)
+	})
+
 	http.HandleFunc("/env", func(w http.ResponseWriter, r *http.Request) {
 		// used to report env vars to tests
 		env_vars := make(map[string]string)
 		for _, e := range os.Environ() {
-	        pair := strings.Split(e, "=")
-	        env_vars[pair[0]] = pair[1]
-	    }
+			pair := strings.Split(e, "=")
+			env_vars[pair[0]] = pair[1]
+		}
 		env_json, err := json.Marshal(env_vars)
 		if err != nil {
 			panic("Invalid env_vars: " + err.Error())
