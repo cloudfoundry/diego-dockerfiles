@@ -11,7 +11,7 @@ ADD fuse-test-rootfs.tar /opt/warden/fuse-rootfs
 ADD docker-registry-test-rootfs.tar /opt/warden/docker-registry-rootfs
 
 # install the binary for generating the protocol
-RUN go get code.google.com/p/gogoprotobuf/protoc-gen-gogo
+RUN go get github.com/gogo/protobuf/protoc-gen-gogo
 
 # debugging utilities
 RUN apt-get -y install strace lsof psmisc
