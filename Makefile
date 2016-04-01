@@ -1,6 +1,6 @@
 TAG?=latest
 
-all: golang-ci warden-ci with-volume inigo-ci diego-docker-app diego-docker-app-custom
+all: golang-ci with-volume inigo-ci diego-docker-app diego-docker-app-custom
 
 .PHONY: golang-ci warden-ci with-volume inigo-ci diego-docker-app diego-docker-app-custom
 
@@ -9,7 +9,6 @@ push:
 	docker push cloudfoundry/warden-ci
 	docker push cloudfoundry/with-volume
 	docker push cloudfoundry/inigo-ci
-	docker push cloudfoundry/inigodockertest
 	docker push cloudfoundry/diego-docker-app
 	docker push cloudfoundry/diego-docker-app-custom
 

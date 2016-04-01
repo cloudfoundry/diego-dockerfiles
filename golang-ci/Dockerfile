@@ -26,9 +26,9 @@ RUN \
   && \
   apt-get clean
 
-# install Go 1.4
+# install Go 1.6
 RUN \
-  wget -qO- https://storage.googleapis.com/golang/go1.4.3.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+  wget -qO- https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz | tar -C /usr/local -xzf -
 
 # install Mercurial (for hg go dependencies)
 RUN \
@@ -36,10 +36,3 @@ RUN \
   cd /tmp/mercurial-2.9.2 && \
   sudo python setup.py install && \
   rm -rf /tmp/mercurial-2.9.2
-
-# install common CI dependencies
-RUN \
-  go get \
-    github.com/dustin/goveralls \
-    golang.org/x/tools/cmd/cover
-
