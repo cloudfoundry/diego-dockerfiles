@@ -3,7 +3,6 @@ MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# pull in dependencies for the garden-linux server
 RUN \
   apt-get update && \
   apt-get -y install mysql-server zip && \

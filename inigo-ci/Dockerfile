@@ -1,6 +1,8 @@
 FROM cloudfoundry/golang-ci
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # pull in dependencies for the garden-linux server
 RUN \
   apt-get update && \
@@ -11,12 +13,16 @@ RUN \
     zip \
     pkg-config \
     autoconf \
+    mysql-server-5.6 \
   && \
   apt-get clean
 
 
 # default rootfs for warden; used for non-Docker inigo tests
 ADD inigo-test-rootfs.tar /opt/inigo/rootfs
+
+RUN service mysql start && \
+  mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password'; GRANT ALL PRIVILEGES ON \`diego\_%\`.* TO 'diego'@'localhost';"
 
 RUN \
   wget -q https://releases.hashicorp.com/consul/0.5.2/consul_0.5.2_linux_amd64.zip -P /tmp/ && \
