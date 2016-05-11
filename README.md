@@ -1,24 +1,25 @@
 # Diego-Dockerfiles
 
-Various docker images used on the diego project.
+Various Docker images used on the Diego project.
 
-#### Updating the diego docker images
+#### Updating the Diego Docker images
 
-1. Download and start docker on your machine following [these instructions](https://docs.docker.com/machine/get-started/)
+1. Download and start Docker on your machine following [these instructions](https://docs.docker.com/machine/get-started/).
 
-1. Clone this repository onto your machine.
+1. Clone this repository onto your machine and change into its root directory.
 
    ```
    git clone https://github.com/cloudfoundry-incubator/diego-dockerfiles.git && cd diego-dockerfiles
    ```
 
-1. `make` the appropriate docker image from the list below (e.g. `make golang-ci` to build an individual docker image). Alternatively, run `make all` for building all of the images. By default images are created with the `latest` tag. Setting the `TAG` environment variable can alter the tag under which the image gets created.
+1. `make` the appropriate Docker image target from the list below (for example, `make golang-ci` to build the `golang-ci` Docker image). Alternatively, run `make all` to build all of the images. By default, images are created with the `latest` tag. To specify a different tag name, set the `TAG` environment variable to that tag name.
+
+   - `diego-docker-app-custom`
+   - `diego-docker-app`
+   - `diego-units-ci`
    - `golang-ci`
    - `inigo-ci`
-   - `diego-units-ci`
-   - `diego-docker-app`
-   - `diego-docker-app-custom`
 
-1. Push the docker image into dockerhub
-   - `make push`: to push all the images
-   - `docker push [IMAGE]`: to push a specific image
+1. Push the Docker image to Dockerhub:
+   - To push all of the images, run `make push`.
+   - To push a specific image, run `docker push <IMAGE>`.
