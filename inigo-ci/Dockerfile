@@ -17,12 +17,26 @@ RUN \
   && \
   apt-get clean
 
-
 # default rootfs for warden; used for non-Docker inigo tests
 ADD inigo-test-rootfs.tar /opt/inigo/rootfs
 
+# Install postgres
+RUN \
+  echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && \
+  apt-get update && \
+  apt-get -y install postgresql-9.4 && \
+  apt-get clean && \
+  sed -i 's/peer/trust/' /etc/postgresql/9.4/main/pg_hba.conf && \
+  sed -i 's/md5/trust/' /etc/postgresql/9.4/main/pg_hba.conf
+
+# Setup Diego Database and Users
 RUN service mysql start && \
   mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password'; GRANT ALL PRIVILEGES ON \`diego\_%\`.* TO 'diego'@'localhost';"
+
+RUN service postgresql start && \
+  createdb -U postgres diego && \
+  psql -h localhost -Upostgres -c "CREATE USER diego WITH createrole superuser password 'diego_pw';"
 
 RUN \
   wget -q https://releases.hashicorp.com/consul/0.5.2/consul_0.5.2_linux_amd64.zip -P /tmp/ && \
