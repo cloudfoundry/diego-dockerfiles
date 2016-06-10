@@ -12,11 +12,13 @@ RUN service mysql start && \
   mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password'; GRANT ALL PRIVILEGES ON \`diego\_%\`.* TO 'diego'@'localhost';"
 
 RUN \
+  echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && \
   apt-get update && \
-  apt-get -y install postgresql && \
+  apt-get -y install postgresql-9.4 && \
   apt-get clean && \
-  sed -i 's/peer/trust/' /etc/postgresql/9.3/main/pg_hba.conf && \
-  sed -i 's/md5/trust/' /etc/postgresql/9.3/main/pg_hba.conf
+  sed -i 's/peer/trust/' /etc/postgresql/9.4/main/pg_hba.conf && \
+  sed -i 's/md5/trust/' /etc/postgresql/9.4/main/pg_hba.conf
 
 RUN service postgresql start && \
   createdb -U postgres diego && \
