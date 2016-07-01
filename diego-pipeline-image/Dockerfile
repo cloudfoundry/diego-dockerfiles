@@ -31,8 +31,8 @@ RUN \
   wget -qO- "https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz" | tar -C /tmp -zxf - && \
   cd /tmp/ruby-install-0.5.0 && \
   make install && \
-  ruby-install --install-dir /usr/local --cleanup ruby 2.3.0 && \
-  rm -rf /usr/local/src/ruby-2.3.0 && \
+  ruby-install --install-dir /usr/local --cleanup ruby 2.1.4 && \
+  rm -rf /usr/local/src/ruby-2.1.4 && \
   rm -rf /usr/local/share/ri && \
   rm -rf /tmp/ruby-install-0.5.0
 
@@ -46,8 +46,8 @@ RUN \
   bash -l -c "pip install awscli"
 
 RUN \
-  wget "https://releases.hashicorp.com/vagrant/1.6.5/vagrant_1.6.5_x86_64.deb" -P /tmp && \
-  dpkg --install /tmp/vagrant_1.6.5_x86_64.deb && \
+  wget "https://releases.hashicorp.com/vagrant/1.8.4/vagrant_1.8.4_x86_64.deb" -P /tmp && \
+  dpkg --install /tmp/vagrant_1.8.4_x86_64.deb && \
   vagrant plugin install vagrant-aws && \
   rm -rf /tmp/*
 
