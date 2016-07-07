@@ -23,6 +23,7 @@ RUN \
     python \
     strace \
     wget \
+    mercurial \
   && \
   apt-get clean
 
@@ -30,9 +31,3 @@ RUN \
 RUN \
   wget -qO- https://storage.googleapis.com/golang/go1.6.1.linux-amd64.tar.gz | tar -C /usr/local -xzf -
 
-# install Mercurial (for hg go dependencies)
-RUN \
-  wget -qO- http://mercurial.selenic.com/release/mercurial-2.9.2.tar.gz | tar -C /tmp -xzf - && \
-  cd /tmp/mercurial-2.9.2 && \
-  sudo python setup.py install && \
-  rm -rf /tmp/mercurial-2.9.2
