@@ -57,6 +57,15 @@ RUN \
   rm -f /bin/tar && \
   rm -rf /tmp/tar-1.28*
 
+# install libseccomp (needed for garden-runc)
+RUN \
+  wget https://github.com/seccomp/libseccomp/releases/download/v2.3.1/libseccomp-2.3.1.tar.gz && \
+  tar zxf libseccomp-2.3.1.tar.gz && \
+  cd libseccomp-2.3.1/  && \
+  ./configure && \
+  make && \
+  make install
+
 # add user diego to run unit tests
 RUN useradd -ms /bin/bash diego
 USER diego
