@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
 ENV HOME /root
@@ -27,6 +27,6 @@ RUN \
   && \
   apt-get clean
 
-# install Go 1.6.3
+# install Go 1.7
 RUN \
-  wget -qO- https://storage.googleapis.com/golang/go1.6.3.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+  wget -qO- https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz | tar -C /usr/local -xzf -

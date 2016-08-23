@@ -7,13 +7,15 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN \
   apt-get update && \
   apt-get -y install \
+    autoconf \
     iptables \
+    lsb-release \
+    mysql-server-5.7 \
+    pkg-config \
     quota \
+    sudo \
     ulogd \
     zip \
-    pkg-config \
-    autoconf \
-    mysql-server-5.6 \
   && \
   apt-get clean
 

@@ -5,7 +5,11 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
   apt-get update && \
-  apt-get -y install mysql-server zip && \
+  apt-get -y install \
+    lsb-release \
+    mysql-server \
+    sudo \
+    zip && \
   apt-get clean
 
 RUN service mysql start && \
