@@ -8,12 +8,12 @@ RUN \
     libreadline6-dev \
     libsqlite3-dev \
     libssl-dev \
-    libssl-dev/trusty \
-    libssl1.0.0/trusty \
+    libssl-dev/xenial \
+    libssl1.0.0/xenial \
     libxml2-dev \
     libxslt-dev \
     libyaml-dev \
-    openssl/trusty \
+    openssl/xenial \
     zip \
     python-pip \
     zlib1g-dev && \
