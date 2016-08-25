@@ -1,0 +1,19 @@
+---
+platform: linux
+inputs:
+- name: inigo-ci-rootfs
+- name: git-inigo-ci
+outputs:
+- name: inigo-ci-with-rootfs
+image_resource:
+  type: docker-image
+  source:
+    repository: cloudfoundry/diego-pipeline
+
+run:
+  path: sh
+  args:
+  - -c
+  - |
+    cp git-inigo-ci/inigo-ci/Dockerfile inigo-ci-with-rootfs
+    cp inigo-ci-rootfs/rootfs.tar inigo-ci-with-rootfs/inigo-test-rootfs.tar
