@@ -41,9 +41,9 @@ RUN service postgresql start && \
   psql -h localhost -Upostgres -c "CREATE USER diego WITH createrole superuser password 'diego_pw';"
 
 RUN \
-  wget -q https://releases.hashicorp.com/consul/0.5.2/consul_0.5.2_linux_amd64.zip -P /tmp/ && \
-  unzip /tmp/consul_0.5.2_linux_amd64.zip -d /usr/local/bin && \
-  rm /tmp/consul_0.5.2_linux_amd64.zip
+  wget -q https://releases.hashicorp.com/consul/0.6.4/consul_0.6.4_linux_amd64.zip -P /tmp/ && \
+  unzip /tmp/consul_0.6.4_linux_amd64.zip -d /usr/local/bin && \
+  rm /tmp/consul_0.6.4_linux_amd64.zip
 
 # install version 1.28 of tar
 RUN \
