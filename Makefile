@@ -1,8 +1,8 @@
 TAG?=latest
 
-all: golang-ci inigo-ci diego-units-ci diego-docker-app diego-docker-app-custom
+all: golang-ci inigo-ci diego-units-ci diego-docker-app diego-docker-app-custom deploy-cf-deployment
 
-.PHONY: golang-ci inigo-ci diego-units-ci diego-docker-app diego-docker-app-custom
+.PHONY: golang-ci inigo-ci diego-units-ci diego-docker-app diego-docker-app-custom deploy-cf-deployment
 
 push:
 	docker push cloudfoundry/golang-ci
@@ -19,6 +19,9 @@ inigo-ci: inigo-ci/Dockerfile
 
 diego-units-ci: diego-units-ci/Dockerfile
 	docker build -t cloudfoundry/diego-units-ci:${TAG} --rm diego-units-ci
+
+deploy-cf-deployment: deploy-cf-deployment/Dockerfile
+	docker build -t cfdiegodocker/deploy-cf-deployment:${TAG} --rm deploy-cf-deployment
 
 diego-docker-app: diego-docker-app/Dockerfile
 	cd diego-docker-app && make TAG=${TAG}
