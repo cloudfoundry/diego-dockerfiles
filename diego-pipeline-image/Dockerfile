@@ -43,6 +43,10 @@ RUN \
     debugger-ruby_core_source
 
 RUN \
+  curl -o /usr/local/bin/bosh2 https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.1-linux-amd64 && \
+  chmod +x /usr/local/bin/bosh2
+
+RUN \
   bash -l -c "pip install awscli"
 
 RUN \
@@ -54,3 +58,5 @@ RUN \
 RUN \
   curl -sL "https://cli.run.pivotal.io/stable?release=linux64-binary" | tar zxf - -C /usr/bin
 
+RUN \
+  curl https://sdk.cloud.google.com | bash -s -- --disable-prompts && /bin/bash -c "source /root/.bashrc"
