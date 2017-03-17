@@ -13,8 +13,7 @@ RUN \
   apt-get clean
 
 RUN service mysql start && \
-  mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password'; GRANT ALL PRIVILEGES ON \`diego\_%\`.* TO 'diego'@'localhost';"
-
+  mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password'; GRANT ALL PRIVILEGES ON \`diego\_%\`.* TO 'diego'@'localhost'; GRANT ALL PRIVILEGES ON \`routingapi\_%\`.* TO 'diego'@'localhost';"
 RUN \
   echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
   wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && \
