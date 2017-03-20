@@ -36,7 +36,9 @@ RUN \
 
 # Setup Diego Database and Users
 RUN service mysql start && \
-  mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password'; GRANT ALL PRIVILEGES ON \`diego\_%\`.* TO 'diego'@'localhost';"
+  mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password';" \
+  mysql -e "GRANT ALL PRIVILEGES ON \`diego\_%\`.* TO 'diego'@'localhost';" \
+  mysql -e "GRANT ALL PRIVILEGES ON \`routingapi\_%\`.* TO 'diego'@'localhost';"
 
 RUN service postgresql start && \
   createdb -U postgres diego && \
