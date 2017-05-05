@@ -27,6 +27,6 @@ RUN \
   && \
   apt-get clean
 
-# install Go 1.8.1
+# install Go 1.7.4
 RUN \
   wget -qO- https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz | tar -C /usr/local -xzf -
