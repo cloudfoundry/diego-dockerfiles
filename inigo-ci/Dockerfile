@@ -71,3 +71,8 @@ RUN \
   ./configure && \
   make && \
   make install
+
+# add user diego to run unit tests
+RUN useradd -ms /bin/bash diego
+USER diego
+
