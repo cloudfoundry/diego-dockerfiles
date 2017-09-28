@@ -10,7 +10,7 @@ push:
 	docker push cloudfoundry/diego-units-ci
 	docker push cloudfoundry/diego-docker-app
 	docker push cloudfoundry/diego-docker-app-custom
-	docker push cloudfoundry/diego-docker-app-debian
+	docker push cfdiegodocker/diego-docker-app-debian
 
 golang-ci: golang-ci/Dockerfile
 	docker build -t cloudfoundry/golang-ci:${TAG} --rm golang-ci

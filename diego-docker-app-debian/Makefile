@@ -1,7 +1,7 @@
 TAG?=latest
 
 all: dockerapp
-	docker build -t cloudfoundry/diego-docker-app-debian:${TAG} .
+	docker build -t cfdiegodocker/diego-docker-app-debian:${TAG} .
 	rm dockerapp
 
 dockerapp:
