@@ -1,6 +1,6 @@
 TAG?=latest
 
-all: golang-ci inigo-ci diego-units-ci diego-docker-app diego-docker-app-custom diego-docker-app-debian deploy-cf-deployment
+all: golang-ci inigo-ci diego-units-ci diego-units-ci-privileged diego-docker-app diego-docker-app-custom diego-docker-app-debian deploy-cf-deployment
 
 .PHONY: golang-ci inigo-ci diego-units-ci diego-docker-app diego-docker-app-custom diego-docker-app-debian deploy-cf-deployment
 
@@ -8,6 +8,7 @@ push:
 	docker push cloudfoundry/golang-ci
 	docker push cloudfoundry/inigo-ci
 	docker push cloudfoundry/diego-units-ci
+	docker push cfdiegodocker/diego-units-ci-privileged
 	docker push cloudfoundry/diego-docker-app
 	docker push cloudfoundry/diego-docker-app-custom
 	docker push cfdiegodocker/diego-docker-app-debian
@@ -20,6 +21,9 @@ inigo-ci: inigo-ci/Dockerfile
 
 diego-units-ci: diego-units-ci/Dockerfile
 	docker build -t cloudfoundry/diego-units-ci:${TAG} --rm diego-units-ci
+
+diego-units-ci-privileged: diego-units-ci-privileged/Dockerfile
+	docker build -t cfdiegodocker/diego-units-ci-privileged:${TAG} --rm diego-units-ci-privileged
 
 deploy-cf-deployment: deploy-cf-deployment/Dockerfile
 	docker build -t cfdiegodocker/deploy-cf-deployment:${TAG} --rm deploy-cf-deployment
