@@ -2,7 +2,7 @@ TAG?=latest
 
 all: golang-ci inigo-ci diego-units-ci diego-units-ci-privileged diego-docker-app diego-docker-app-custom diego-docker-app-debian deploy-cf-deployment
 
-.PHONY: golang-ci inigo-ci diego-units-ci diego-docker-app diego-docker-app-custom diego-docker-app-debian deploy-cf-deployment
+.PHONY: golang-ci inigo-ci diego-units-ci diego-docker-app diego-docker-app-custom diego-docker-app-debian deploy-cf-deployment diego-units-ci-privileged
 
 push:
 	docker push cloudfoundry/golang-ci
