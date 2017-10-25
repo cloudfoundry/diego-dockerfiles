@@ -63,6 +63,11 @@ RUN \
   rm -f /bin/tar && \
   rm -rf /tmp/tar-1.28*
 
+RUN cd /usr/local/bin && \
+  wget https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.42-linux-amd64 && \
+  mv bosh-cli-2.0.42-linux-amd64 bosh && \
+  chmod +x ./bosh
+
 # install libseccomp (needed for garden-runc)
 RUN \
   wget https://github.com/seccomp/libseccomp/releases/download/v2.3.1/libseccomp-2.3.1.tar.gz && \
