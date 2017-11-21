@@ -43,7 +43,7 @@ RUN \
     debugger-ruby_core_source
 
 RUN \
-  curl -o /usr/local/bin/bosh2 https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.1-linux-amd64 && \
+  curl -o /usr/local/bin/bosh2 https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.45-linux-amd64 && \
   chmod +x /usr/local/bin/bosh2
 
 RUN \
