@@ -6,11 +6,13 @@ RUN chmod +x /bin/jq
 
 # curl: for hitting test servers
 # git: for testing git buildpacks
+# fuse: for inigo style vizzini tests
 RUN \
   apt-get update && \
   apt-get -y install \
     curl \
     git \
+    fuse \
   && \
   apt-get clean
 
