@@ -10,6 +10,7 @@ RUN \
     autoconf \
     btrfs-tools \
     xfsprogs \
+    dnsmasq \
     iptables \
     lsb-release \
     mysql-server-5.7 \
