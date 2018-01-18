@@ -9,6 +9,7 @@ RUN \
   apt-get -y install \
     autoconf \
     btrfs-tools \
+    xfsprogs \
     iptables \
     lsb-release \
     mysql-server-5.7 \
