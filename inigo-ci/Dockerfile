@@ -78,3 +78,5 @@ RUN \
   ./configure && \
   make && \
   make install
+
+COPY .bashrc /root/.bashrc
