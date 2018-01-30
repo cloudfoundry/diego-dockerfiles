@@ -16,4 +16,5 @@ run:
   - -c
   - |
     cp git-inigo-ci/inigo-ci/Dockerfile inigo-ci-with-rootfs
+    cp git-inigo-ci/inigo-ci/.bashrc inigo-ci-with-rootfs
     cp inigo-ci-rootfs/rootfs.tar inigo-ci-with-rootfs/inigo-test-rootfs.tar
