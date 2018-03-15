@@ -15,7 +15,6 @@ RUN \
     libyaml-dev \
     openssl/xenial \
     zip \
-    python-pip \
     zlib1g-dev && \
   apt-get clean
 
@@ -23,37 +22,8 @@ ADD https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 /bin/jq
 RUN chmod +x /bin/jq
 
 RUN \
-  wget -q "https://github.com/cloudfoundry-incubator/spiff/releases/download/v1.0.7/spiff_linux_amd64.zip" -P /tmp/ && \
-  unzip /tmp/spiff_linux_amd64.zip -d /usr/local/bin && \
-  rm /tmp/spiff_linux_amd64.zip
-
-RUN \
-  wget -qO- "https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz" | tar -C /tmp -zxf - && \
-  cd /tmp/ruby-install-0.5.0 && \
-  make install && \
-  ruby-install --install-dir /usr/local --cleanup ruby 2.1.4 && \
-  rm -rf /usr/local/src/ruby-2.1.4 && \
-  rm -rf /usr/local/share/ri && \
-  rm -rf /tmp/ruby-install-0.5.0
-
-RUN \
-  gem install --no-rdoc --no-ri \
-    bundler \
-    bosh_cli \
-    debugger-ruby_core_source
-
-RUN \
-  curl -o /usr/local/bin/bosh2 https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.45-linux-amd64 && \
-  chmod +x /usr/local/bin/bosh2
-
-RUN \
-  bash -l -c "pip install awscli"
-
-RUN \
-  wget "https://releases.hashicorp.com/vagrant/1.8.4/vagrant_1.8.4_x86_64.deb" -P /tmp && \
-  dpkg --install /tmp/vagrant_1.8.4_x86_64.deb && \
-  vagrant plugin install vagrant-aws && \
-  rm -rf /tmp/*
+  curl -o /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.45-linux-amd64 && \
+  chmod +x /usr/local/bin/bosh
 
 RUN \
   curl -sL "https://cli.run.pivotal.io/stable?release=linux64-binary" | tar zxf - -C /usr/bin
