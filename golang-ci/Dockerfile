@@ -29,4 +29,4 @@ RUN \
 
 # install Go
 RUN \
-  wget -qO- https://storage.googleapis.com/golang/go1.9.6.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+  wget -qO- https://dl.google.com/go/go1.11.linux-amd64.tar.gz | tar -C /usr/local -xzf -
