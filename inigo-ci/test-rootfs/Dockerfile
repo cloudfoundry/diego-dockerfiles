@@ -13,7 +13,7 @@ RUN \
     curl \
     git \
     fuse \
-    netcat \
+    netcat-openbsd \
   && \
   apt-get clean
 
