@@ -15,7 +15,8 @@ RUN \
     libyaml-dev \
     openssl/xenial \
     zip \
-    zlib1g-dev && \
+    zlib1g-dev \
+    ruby && \
   apt-get clean
 
 ADD https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 /bin/jq
