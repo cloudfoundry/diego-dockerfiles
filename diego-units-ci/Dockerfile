@@ -21,7 +21,8 @@ RUN \
   apt-get -y install postgresql-9.4 && \
   apt-get clean && \
   sed -i 's/peer/trust/' /etc/postgresql/9.4/main/pg_hba.conf && \
-  sed -i 's/md5/trust/' /etc/postgresql/9.4/main/pg_hba.conf
+  sed -i 's/md5/trust/' /etc/postgresql/9.4/main/pg_hba.conf && \
+  sed -i 's/max_connections = 100/max_connections = 300/' /etc/postgresql/9.4/main/postgresql.conf
 
 RUN service postgresql start && \
   createdb -U postgres diego && \
