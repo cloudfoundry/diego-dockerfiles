@@ -1,6 +1,8 @@
 FROM ubuntu:16.04
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
+ARG go_version
+
 ENV HOME /root
 ENV GOPATH /root/go
 ENV PATH /root/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -29,4 +31,4 @@ RUN \
 
 # install Go
 RUN \
-  wget -qO- https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+  wget -qO- https://dl.google.com/go/go${go_version}.linux-amd64.tar.gz | tar -C /usr/local -xzf -
