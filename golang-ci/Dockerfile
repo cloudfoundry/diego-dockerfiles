@@ -31,4 +31,4 @@ RUN \
 
 # install Go
 RUN \
-  wget -qO- https://dl.google.com/go/go${go_version}.linux-amd64.tar.gz | tar -C /usr/local -xzf -
+  wget -qO- https://dl.google.com/go/${go_version}.linux-amd64.tar.gz | tar -C /usr/local -xzf -
