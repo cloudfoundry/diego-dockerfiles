@@ -1,5 +1,7 @@
 FROM cloudfoundry/golang-ci
 
+ENV credhub_cli_version 2.6.0
+
 RUN \
   apt-get update && \
   apt-get -y --force-yes install \
@@ -32,3 +34,9 @@ RUN \
 
 RUN \
   curl https://sdk.cloud.google.com | bash -s -- --disable-prompts && /bin/bash -c "source /root/.bashrc"
+
+# credhub-cli
+RUN \
+  wget https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${credhub_cli_version}/credhub-linux-${credhub_cli_version}.tgz -P /tmp && \
+  tar xzvf /tmp/credhub-linux-${credhub_cli_version}.tgz -C /usr/local/bin && \
+  chmod +x /usr/local/bin/credhub
