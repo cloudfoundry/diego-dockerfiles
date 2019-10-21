@@ -17,6 +17,7 @@ RUN \
     zip \
     zlib1g-dev \
     ruby && \
+    bc && \
   apt-get clean
 
 ADD https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 /bin/jq
