@@ -1,6 +1,7 @@
 FROM cloudfoundry/golang-ci
 
 ENV credhub_cli_version 2.6.0
+ENV bbl_version 8.3.2
 
 RUN \
   apt-get update && \
@@ -40,3 +41,10 @@ RUN \
   wget https://github.com/cloudfoundry-incubator/credhub-cli/releases/download/${credhub_cli_version}/credhub-linux-${credhub_cli_version}.tgz -P /tmp && \
   tar xzvf /tmp/credhub-linux-${credhub_cli_version}.tgz -C /usr/local/bin && \
   chmod +x /usr/local/bin/credhub
+
+# bbl and dependencies
+RUN \
+  wget https://github.com/cloudfoundry/bosh-bootloader/releases/download/v${bbl_version}/bbl-v${bbl_version}_linux_x86-64 -P /tmp && \
+  mv /tmp/bbl-* /usr/local/bin/bbl && \
+  cd /usr/local/bin && \
+  chmod +x bbl
