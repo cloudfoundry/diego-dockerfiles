@@ -2,9 +2,9 @@ FROM cloudfoundry/golang-ci
 
 ENV credhub_cli_version 2.6.0
 ENV bbl_version 8.3.2
+ENV yq_version 2.4.0
 
 RUN \
-  add-apt-repository ppa:rmescandon/yq && \
   apt-get update && \
   apt-get -y --force-yes install \
     libmysqlclient-dev \
@@ -21,12 +21,14 @@ RUN \
     zip \
     zlib1g-dev \
     bc \
-    yq \
     ruby && \
   apt-get clean
 
 ADD https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 /bin/jq
 RUN chmod +x /bin/jq
+
+ADD https://github.com/mikefarah/yq/releases/download/${yq_version}/yq_linux_amd64 /usr/local/bin/yq
+RUN chmod +x /usr/local/bin/yq
 
 RUN \
   curl -o /usr/local/bin/bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-2.0.45-linux-amd64 && \
