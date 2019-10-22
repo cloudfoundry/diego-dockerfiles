@@ -4,6 +4,7 @@ ENV credhub_cli_version 2.6.0
 ENV bbl_version 8.3.2
 
 RUN \
+  sudo add-apt-repository ppa:rmescandon/yq && \
   apt-get update && \
   apt-get -y --force-yes install \
     libmysqlclient-dev \
@@ -20,6 +21,7 @@ RUN \
     zip \
     zlib1g-dev \
     bc \
+    yq \
     ruby && \
   apt-get clean
 
