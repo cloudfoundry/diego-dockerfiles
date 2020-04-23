@@ -2,6 +2,7 @@ FROM cloudfoundry/golang-ci
 
 ENV credhub_cli_version 2.6.0
 ENV bbl_version 8.3.2
+ENV hub_cli_version 2.14.2
 
 RUN \
   apt-get update && \
@@ -52,3 +53,9 @@ RUN \
   mv /tmp/bbl-* /usr/local/bin/bbl && \
   cd /usr/local/bin && \
   chmod +x bbl
+
+RUN \
+  wget https://github.com/github/hub/releases/download/v${hub_cli_version}/hub-linux-amd64-${hub_cli_version}.tgz -P /tmp && \
+  tar xvf /tmp/hub-linux*.tgz -C /tmp && \
+  /tmp/hub-linux-amd64-${hub_cli_version}/install && \
+  rm -rf /tmp/hub-linux*
