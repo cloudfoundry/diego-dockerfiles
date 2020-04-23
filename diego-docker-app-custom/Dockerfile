@@ -1,8 +1,8 @@
 FROM busybox
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
-RUN adduser -D -s /bin/sh dockeruser
-USER dockeruser
+RUN adduser -D -s /bin/sh dockeruser --uid 1000
+USER 1000
 
 ENV VCAP_APPLICATION {}
 ENV BAD_QUOTE \'

@@ -23,3 +23,7 @@ Various Docker images used on the Diego project.
 1. Push the Docker image to Dockerhub:
    - To push all of the images, run `make push`.
    - To push a specific image, run `docker push <IMAGE>`.
+
+## Reporting issues and requesting features
+
+Please report all issues and feature requests in [cloudfoundry/diego-release](https://github.com/cloudfoundry/diego-release/issues).
