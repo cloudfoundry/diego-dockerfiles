@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:focal
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
 ARG go_version
