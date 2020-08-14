@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:16.04
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
 ARG go_version
@@ -9,7 +9,6 @@ ENV PATH /root/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin
 
 RUN mkdir -p $GOPATH
 
-ARG DEBIAN_FRONTEND=noninteractive
 # install build dependencies
 # - graphviz is for rendering heap w/ pprof
 RUN \
@@ -20,7 +19,7 @@ RUN \
     git \
     graphviz \
     htop \
-    libpython2-dev \
+    libpython-dev \
     lsof \
     psmisc \
     python \
