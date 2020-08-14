@@ -9,6 +9,7 @@ ENV PATH /root/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin
 
 RUN mkdir -p $GOPATH
 
+ARG DEBIAN_FRONTEND=noninteractive
 # install build dependencies
 # - graphviz is for rendering heap w/ pprof
 RUN \
@@ -19,7 +20,7 @@ RUN \
     git \
     graphviz \
     htop \
-    libpython-dev \
+    libpython2-dev \
     lsof \
     psmisc \
     python \
