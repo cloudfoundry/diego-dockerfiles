@@ -15,4 +15,7 @@ WORKDIR /myapp
 
 RUN adduser -D vcap
 
+# set user to 'nobody' so that it is non-root
+USER 65534
+
 CMD ["dockerapp"]
