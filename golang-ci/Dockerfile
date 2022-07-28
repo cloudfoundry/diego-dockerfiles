@@ -19,10 +19,10 @@ RUN \
     git \
     graphviz \
     htop \
-    libpython-dev \
+    libpython2-dev \
     lsof \
     psmisc \
-    python \
+    python2 \
     strace \
     wget \
     mercurial \
