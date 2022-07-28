@@ -8,12 +8,12 @@ RUN \
   apt-get update && \
   apt-get -y install \
     autoconf \
-    btrfs-tools \
+    btrfs-progs \
     xfsprogs \
     dnsmasq \
     iptables \
     lsb-release \
-    mysql-server-5.7 \
+    mariadb-server-10.6 \
     pkg-config \
     quota \
     sudo \
