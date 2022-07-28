@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:22.04
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
 ARG go_version

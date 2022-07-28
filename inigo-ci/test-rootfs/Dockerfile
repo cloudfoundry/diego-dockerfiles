@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:jammy
 
 # for stupid simple bash servers
 ADD http://stedolan.github.io/jq/download/linux64/jq /bin/jq
