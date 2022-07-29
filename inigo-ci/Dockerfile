@@ -18,7 +18,7 @@ RUN \
     quota \
     sudo \
     uidmap \
-    ulogd \
+    ulogd2 \
     zip \
   && \
   apt-get clean
