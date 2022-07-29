@@ -12,8 +12,8 @@ RUN \
     libreadline6-dev \
     libsqlite3-dev \
     libssl-dev \
-    libssl-dev/xenial \
-    libssl1.0.0/xenial \
+    libssl-dev/jammy \
+    libssl1.0.0/jammy \
     libxml2-dev \
     libxslt-dev \
     libyaml-dev \
