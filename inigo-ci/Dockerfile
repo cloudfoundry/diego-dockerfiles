@@ -37,7 +37,7 @@ RUN \
   sed -i 's/md5/trust/' /etc/postgresql/9.4/main/pg_hba.conf
 
 # Setup Diego Database and Users
-RUN service mysql start && \
+RUN service mariadb start && \
   mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password';" && \
   mysql -e "GRANT ALL PRIVILEGES ON \`diego\_%\`.* TO 'diego'@'localhost';" && \
   mysql -e "GRANT ALL PRIVILEGES ON \`routingapi\_%\`.* TO 'diego'@'localhost';"
