@@ -6,18 +6,18 @@ ENV hub_cli_version 2.14.2
 
 RUN \
   apt-get update && \
-  apt-get -y --force-yes install \
+  apt-get -y install \
     libmysqlclient-dev \
     libpq-dev \
     libreadline6-dev \
     libsqlite3-dev \
     libssl-dev \
     libssl-dev/jammy \
-    libssl1.0.0/jammy \
+    libssl3/jammy \
     libxml2-dev \
     libxslt-dev \
     libyaml-dev \
-    openssl/xenial \
+    openssl/jammy \
     zip \
     zlib1g-dev \
     bc \
