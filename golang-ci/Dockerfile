@@ -21,11 +21,12 @@ RUN \
     htop \
     libpython2-dev \
     lsof \
+    mercurial \
     psmisc \
     python2 \
+    rsync \
     strace \
     wget \
-    mercurial \
   && \
   apt-get clean
 
