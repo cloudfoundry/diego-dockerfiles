@@ -11,6 +11,7 @@ RUN \
     btrfs-progs \
     xfsprogs \
     dnsmasq \
+    iproute2 \
     iptables \
     lsb-release \
     mysql-server-8.0 \
