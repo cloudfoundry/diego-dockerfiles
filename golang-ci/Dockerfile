@@ -24,6 +24,7 @@ RUN \
     mercurial \
     psmisc \
     python2 \
+    rsync \
     strace \
     wget \
   && \
