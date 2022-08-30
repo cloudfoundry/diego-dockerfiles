@@ -24,9 +24,7 @@ RUN \
     mercurial \
     psmisc \
     python2 \
-    rsync \
     strace \
-    tar \
     wget \
   && \
   apt-get clean
