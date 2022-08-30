@@ -14,6 +14,7 @@ RUN \
     iproute2 \
     iptables \
     lsb-release \
+    mariadb-server-10.6 \
     mysql-server-8.0 \
     pkg-config \
     quota \
