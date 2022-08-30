@@ -15,13 +15,15 @@ RUN \
     iptables \
     lsb-release \
     mariadb-server-10.6 \
-    mysql-server-8.0 \
     pkg-config \
     quota \
     sudo \
     uidmap \
     ulogd2 \
     zip \
+  && \
+  apt-get -y install \
+    mysql-server-8.0 \
   && \
   apt-get clean
 
