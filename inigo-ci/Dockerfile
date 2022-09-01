@@ -11,9 +11,10 @@ RUN \
     btrfs-progs \
     xfsprogs \
     dnsmasq \
+    iproute2 \
     iptables \
     lsb-release \
-    mariadb-server-10.6 \
+    mysql-server-8.0 \
     pkg-config \
     quota \
     sudo \
@@ -37,8 +38,8 @@ RUN \
   sed -i 's/md5/trust/' /etc/postgresql/9.4/main/pg_hba.conf
 
 # Setup Diego Database and Users
-RUN service mariadb start && \
-  mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password';" && \
+RUN service mysql start && \
+  mysql -e "CREATE USER 'diego'@'localhost' IDENTIFIED BY 'diego_password';"
   mysql -e "GRANT ALL PRIVILEGES ON \`diego\_%\`.* TO 'diego'@'localhost';" && \
   mysql -e "GRANT ALL PRIVILEGES ON \`routingapi\_%\`.* TO 'diego'@'localhost';"
 
