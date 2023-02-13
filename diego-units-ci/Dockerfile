@@ -1,4 +1,4 @@
-FROM cloudfoundry/golang-ci
+FROM cloudfoundry/diego-golang-ci
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
 ENV DEBIAN_FRONTEND noninteractive

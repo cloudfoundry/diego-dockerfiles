@@ -1,4 +1,4 @@
-FROM cloudfoundry/golang-ci
+FROM cloudfoundry/diego-golang-ci
 MAINTAINER https://github.com/cloudfoundry-incubator/diego-dockerfiles
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -25,7 +25,7 @@ RUN \
   apt-get clean
 
 # default rootfs for warden; used for non-Docker inigo tests
-ADD inigo-test-rootfs.tar /opt/inigo/rootfs
+ADD diego-inigo-test-rootfs.tar /opt/inigo/rootfs
 
 # Install postgres
 RUN \

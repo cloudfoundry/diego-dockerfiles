@@ -1,4 +1,4 @@
-FROM cloudfoundry/golang-ci
+FROM cloudfoundry/diego-golang-ci
 
 ENV credhub_cli_version 2.6.0
 ENV bbl_version 8.3.2
