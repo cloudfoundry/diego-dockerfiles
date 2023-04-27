@@ -15,7 +15,6 @@ Various Docker images used on the Diego project.
 1. `make` the appropriate Docker image target from the list below (for example, `make golang-ci` to build the `golang-ci` Docker image). Alternatively, run `make all` to build all of the images. By default, images are created with the `latest` tag. To specify a different tag name, set the `TAG` environment variable to that tag name.
 
    - `diego-docker-app`
-   - `diego-units-ci`
    - `golang-ci`
    - `inigo-ci`
 
