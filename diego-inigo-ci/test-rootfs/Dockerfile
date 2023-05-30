@@ -1,9 +1,6 @@
 FROM ubuntu:jammy
 
-# for stupid simple bash servers
-ADD http://stedolan.github.io/jq/download/linux64/jq /bin/jq
-RUN chmod +x /bin/jq
-
+# jq: for stupid simple bash servers
 # curl: for hitting test servers
 # git: for testing git buildpacks
 # fuse: for inigo style vizzini tests
@@ -12,6 +9,7 @@ RUN \
   apt-get -y install \
     curl \
     git \
+    jq \
     fuse \
     netcat-openbsd \
   && \
