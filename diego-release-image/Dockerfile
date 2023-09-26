@@ -1,4 +1,6 @@
-FROM cloudfoundry/diego-golang-ci
+ARG go_version
+
+FROM "cloudfoundry/diego-golang-ci:go-${go_version}"
 
 ENV credhub_cli_version 2.6.0
 ENV bbl_version 8.3.2
